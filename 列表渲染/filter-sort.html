@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>filter-sort</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+               /* el:"#mode",
+                 data:{
+                 numbers:[1,2,3,4,5]
+                 },
+                 computed:{
+                 evenNumbers:function () {
+                 return this.numbers.filter(function (number) {
+                 return number%2===0;
+                 })
+                 }
+                 }*/
+
+                // 在计算属性不使用的情况下(例如,在嵌套v-for循环中)使用method方法
+                el:"#mode",
+                data:{
+                    numbers:[1,2,3,4,5]
+                },
+                methods:{
+                    even:function (numbers) {
+                        return numbers.filter(function (number) {
+                            return number%2===0;
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<ul id="mode">
+    <!--<li v-for="n in evenNumbers">{{n}}</li>-->
+    <li v-for="n in even(numbers)">{{n}}</li>
+</ul>
+</body>
+</html>
