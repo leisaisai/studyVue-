@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        Vue.component("template");
+        window.onload=function () {
+            vm=new Vue({
+                /*el:"#aa",
+                data:{
+                    valid:true,
+                }*/
+                
+                /*el:"#ss" ,
+                data:{
+                    ok:true
+                }*/
+                
+//                el:"#bb",
+                
+                /*el:"#cc",
+                data:{
+                    type:"A"
+                }*/
+                
+                /*el:"#key",
+                data:{
+                    loginType:"username"
+                },
+                methods:{
+                    toggle:function () {
+                        if (this.loginType==="username"){
+                            this.loginType=" ";
+                        }else{
+                            this.loginType="username";
+                        }
+                    }
+                }*/
+
+                /*el:"#keySo",
+                data:{
+                    loginType:"username"
+                },
+                methods:{
+                    toggleSo:function () {
+                        if (this.loginType==="username"){
+                            this.loginType=" ";
+                        }else{
+                            this.loginType="username";
+                        }
+                    }
+                }*/
+                
+                el:"#shows",
+                data:{
+                    ok:false
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<div id="sss">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>NO</h1>
+</div>
+
+<!--因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？
+此时我们可以把一个 <template> 元素当做包装元素，并在上面使用 v-if，最终的渲染
+    结果不会包含它。-->
+
+<div id="ss">
+    <template  v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+</div>
+
+<div id="aa">
+    <template  v-if="valid">
+        <div>1</div>
+    </template>
+    <template v-else>
+        <div>2</div>
+    </template>
+</div>
+
+
+<div id="bb">
+    <div v-if="Math.random()>0.5">
+        Sorry
+    </div>
+    <div v-else>
+        not sorry
+    </div>
+</div>
+
+<div id="cc">
+    <div v-if="type==='A'">
+        A
+    </div>
+    <div v-else-if="type==='B'">
+        B
+    </div>
+    <div v-else-if="type==='C'">
+        C
+    </div>
+    <div v-else>
+        not A/B/C
+    </div>
+</div>
+
+<div id="key">
+    <template v-if="loginType==='username'">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label for="email">email</label>
+        <input type="text" id="email" placeholder="Enter your email">
+    </template>
+    <button v-on:click="toggle">Toggle login type</button>
+</div>
+
+<div id="keySo">
+    <template v-if="loginType==='username'">
+        <label for="name">Username</label>
+        <input type="text" id="name" placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label for="emailSo">email</label>
+        <input type="text" id="emailSo" placeholder="Enter your email" key="email-input">
+    </template>
+    <button v-on:click="toggleSo">Toggle login type</button>
+</div>
+
+<div id="shows">
+    <h1 v-show="ok">Hello!</h1>
+    <template v-show="ok">    <!-- v-show不支持template语法 -->
+        sdfsd
+    </template>
+</div>
+</body>
+</html>

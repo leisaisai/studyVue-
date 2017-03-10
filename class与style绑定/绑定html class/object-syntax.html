@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>object-sync</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        .static{
+            border: 1px solid blue;
+        }
+        .active{
+            width: 400px;
+            height: 20px;
+            background: red;
+        }
+        .text-danger{
+            background: gray;
+        }
+    </style>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                /*el:"div",
+                data:{
+                    isActive:false,
+                    hasError:true
+                }*/
+                
+                /*el:"div",
+                data:{
+                    classObject:{
+                        active:true,
+                        'text-danger':false
+                    }
+                }*/
+                
+                el:"div",
+                data:{
+                    isActive:true,
+                    error:null
+                },
+                computed:{
+                    classObject:function () {
+                        return {
+                            active: this.isActive && !this.error,
+                            "text-danger": this.error && this.error.type === "fatal"
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+ <!--<div class="static" v-bind:class="{active:isActive,'text-danger':hasError}">我们要一个中国.</div>-->
+<!--<div v-bind:class="classObject">zhongguohao</div>-->
+<div v-bind:class="classObject">中国好啊</div>
+</body>
+</html>

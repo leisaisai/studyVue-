@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>computed-watch</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        var vue;
+        window.onload=function () {
+           /* vm=new Vue({
+                el:"#demo",
+                data:{
+                    firstName:"Foo",
+                    lastName:"Bar",
+                    fullName:"Foo Bar"
+                },
+                watch:{   //watch用法观察vue实例上的数据变动
+                    firstName:function (val) {
+                        this.fullName=val+" "+this.lastName;
+                    },
+                    lastName:function (val) {
+                        this.fullName=this.firstName+" "+val;
+                    }
+                }
+            });*/
+
+            //计算属性
+            vue=new Vue({
+                el:"#demo",
+                data:{
+                    firstName:"lei",
+                    lastName:"sai"
+                },
+                computed:{
+                    fullName2:function () {
+                        return this.firstName+" "+this.lastName;
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="demo">
+    <p>{{fullName}}</p>
+    <p>{{fullName2}}</p>
+</div>
+</body>
+</html>

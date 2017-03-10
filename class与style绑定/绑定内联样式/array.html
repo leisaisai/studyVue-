@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"div",
+                data:{
+                    baseStyles:{
+                        color:"red"
+                    },
+                    overridingStyles:{
+                        fontSize:"30px"
+                    }
+                }
+                
+               
+            })
+        }
+    </script>
+</head>
+<body>
+<div v-bind:style="[baseStyles,overridingStyles]">wo ai ni</div>
+</body>
+</html>

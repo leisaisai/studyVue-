@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        .divider{
+            list-style: none;
+            border-bottom: blue 1px dashed;
+            margin: 8px -5px ;
+        }
+    </style>
+    <script>
+        var vm;
+        Vue.component("todo-item",{
+            template:"<li>{{title}}<button v-on:click='$emit(\"remove\")'>X</button></li>",
+            props:["title"]
+        });
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example-1",
+                data:{
+                    items:[
+                        {message:"Foo"},
+                        {message:"Bar"}
+                    ]
+                }
+                
+                /*el:"#example-2",
+                data:{
+                    parentMessage:"parent",
+                    items:[
+                        {message:"foo"},
+                        {message:"bar"}
+                    ]
+                }*/
+                
+                /*el:"#example-3",
+                data:{
+                    items:[
+                        {message:"foo"},
+                        {message:"bar"}
+                    ]
+                }*/
+                
+                /*el:"#repeat-object",
+                data:{
+                    object:{
+                        firstName:"John",
+                        lastName:"Doe",
+                        age:30
+                    }
+                }*/
+
+                /*el:"#repeat",
+                data:{
+                    object:{
+                        firstName:"John",
+                        lastName:"Doe",
+                        age:30
+                    }
+                }*/
+
+                /*el:"#object",
+                data:{
+                    object:{
+                        firstName:"John",
+                        lastName:"Doe",
+                        age:30
+                    }
+                }*/
+                
+//                el:"#number"
+
+                <!--组件和v-for-->
+               /* el:"#todo-list-example",
+                data:{
+                    newTodoText:"",
+                    todos:[
+                        "Do the dishes",
+                        "Take out the trash",
+                        "Mow the lawn"
+                    ]
+                },
+                methods:{
+                    addNewTodo:function () {
+                        this.todos.push(this.newTodoText);
+                        this.newTodoText="";
+                    }
+                }*/
+                
+               /*el:"#haomedo",
+                data:{
+                    message:  ['hello', 'vue', 'js'],
+                    items: [
+                        {name: 'apple', price: '10'},
+                        {name: 'orange', price: '12'}
+                    ]
+                }*/
+            })
+        }
+    </script>
+</head>
+<body>
+<ul id="example-1">
+    <li v-for="item in items">
+        {{item.message}}
+    </li>
+</ul>
+
+<ul id="example-2">
+    <li v-for="(item,index) of items">  <!-- on 和of都可以在此处 -->
+        {{parentMessage}}-{{index}}-{{item.message}}
+    </li>
+</ul>
+
+<ul id="example-3">
+    <template v-for="item of items">
+        <li>{{item.message}}</li>
+        <li class="divider"></li>
+    </template>
+</ul>
+<!--对象迭代-->
+<ul id="repeat-object" class="demo">
+    <li v-for="value in object">
+        {{value}}
+    </li>
+</ul>
+
+<ul id="repeat" class="demo">
+    <li v-for="(value,key) in object">
+       {{key}} : {{value}}
+    </li>
+</ul>
+
+<ul id="object" class="demo">
+    <li v-for="(value,key,index) in object">
+       {{index}} : {{key}} : {{value}}
+    </li>
+</ul>
+
+<!--整数迭代-->
+<div id="number">
+    <span v-for="n in 10">
+        {{n}}
+    </span>
+</div>
+
+<!--组件和v-for-->
+<div id="todo-list-example">
+    <input type="text"
+        v-model="newTodoText"
+        v-on:keyup.enter="addNewTodo"
+        placeholder="Add a todo"
+    >
+    <ul>
+        <li
+            is="todo-item"
+            v-for="(todo,index) in todos"
+            v-bind:title="todo"
+            v-on:remove="todos.splice(index,1)">
+        </li>
+    </ul>
+</div>
+
+<div id="haomedo">
+    <div v-for="item in items" :key="item.name">
+        <p>{{item.name}}</p>
+        <p>{{item.price}}</p>
+    </div>
+</div>
+</body>
+</html>

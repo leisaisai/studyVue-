@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>method-function</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var attr={a:1};
+        var vm=new Vue({
+            data: attr
+        });
+        alert(vm.a===attr.a);
+        attr.a=2;
+        alert(vm.a);
+        vm.a=3;
+        alert(attr.a);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

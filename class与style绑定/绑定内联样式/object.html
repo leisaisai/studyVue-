@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                /*el:"div",
+                data:{
+                    activeColor:"red",
+                    fontSize:30
+                }*/
+                
+                /*el:"div",
+                data:{
+                    styleObject:{
+                        color:"red",
+                        fontSize:"13px"
+                    }
+                }*/
+                
+                el:"div",
+                data:{
+                    activeColor:true,
+                    fontSize:true
+                },
+                computed:{
+                    styleObject:function () {
+                        return   {
+                            color: this.activeColor ? this.activeColor = "red":"",
+                            fontSize: this.fontSize ? this.fontSize = "30px":"16px"
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<!--<div v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">upupdate</div>-->
+<div v-bind:style="styleObject">tiantianxiangshang</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>computed-property</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example",
+                data:{
+                    message:"Hello"
+                },
+                computed:{
+                    reversedMessage:function () {
+                        return this.message.split("").reverse().join("");
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <p>Original message:"{{message}}"</p>
+    <p>Computed reversed message:"{{reversedMessage}}"</p>
+</div>
+</body>
+</html>

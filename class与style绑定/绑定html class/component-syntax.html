@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>component-syntax</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        Vue.component("my-component",{
+            template:"<p class='foo bar'>Hi</p>"
+        });
+        window.onload=function () {
+            /*vm=new Vue({
+                el:"#demo"
+            })*/
+            
+            vm=new Vue({
+                el:"#demo",
+                data:{
+                    isActive:true
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="demo">
+    <!--<my-component class="baz boo"></my-component>-->
+    <my-component v-bind:class="{active:isActive}"></my-component>
+</div>
+</body>
+</html>
