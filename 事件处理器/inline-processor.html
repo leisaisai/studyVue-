@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>inline-processor</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example",
+                methods:{
+                    say:function (message) {
+                        alert(message);
+                    },
+                    warn:function (message,event) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        alert(message);
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <button v-on:click="say('hi')">hi</button>
+    <button v-on:click="say('what')">what</button>
+    <button v-on:click="warn('Form can\'t be submitted yet.',$event)">Submit</button>
+</div>
+</body>
+</html>

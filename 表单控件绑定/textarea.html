@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>textarea</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example",
+                data:{
+                    message:""
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <span>Multiline message is:</span>
+    <p style="white-space: pre">{{message}}</p>
+    <br>
+    <textarea v-model="message" placeholder="add multiple lines" cols="30" rows="10"></textarea>
+</div>
+</body>
+</html>

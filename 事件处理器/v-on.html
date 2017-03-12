@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example",
+                data:{
+                    counter:0
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <button v-on:click="counter += 1">增加 1</button>
+    <p>这个按钮被点击了 {{counter}} 次.</p>
+</div>
+</body>
+</html>

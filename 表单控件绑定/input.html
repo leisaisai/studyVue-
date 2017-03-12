@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>input</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload = function () {
+            vm = new Vue({
+                el:"#example",
+                data:{
+                    message:""
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <input v-model="message" placeholder="edit me">
+    <p>message is: {{message}}</p>
+</div>
+</body>
+</html>

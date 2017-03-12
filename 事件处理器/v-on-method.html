@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on-method</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                el:"#example",
+                data:{
+                    name:"Vue.js"
+                },
+                methods:{
+                    greet:function (event) {
+                        alert("Hello"+this.name+"!");
+                        alert(event.target.tagName);
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <button v-on:click="greet">Greet</button>
+</div>
+</body>
+</html>
