@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>input-v-on</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("current-input",{
+            template:"<span>\$<input ref='input' v-bind:value='value' v-on:input='update($event.target.value)'></span>",
+            props:["value"],
+            methods:{
+                update:function (value) {
+                    var formattedValue=value
+                        .trim()
+                        .slice(0,value.indexOf(".")+3);
+                    if (formattedValue !== value) {
+                        this.$refs.input.value=formattedValue;
+                    }
+                    this.$emit('input',Number(formattedValue));
+                }
+            }
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#q",
+                data:{
+                    price:""
+                }
+            })
+        }
+        
+    </script>
+</head>
+<body>
+<div id="q">
+    <p>{{price}}</p>
+    <current-input v-model="price"></current-input>
+</div>
+</body>
+</html>

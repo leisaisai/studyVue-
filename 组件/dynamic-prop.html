@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>dynamic-prop</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("child",{
+            props:["myMessage"],
+            template:"<span>{{myMessage}}</span>"
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#example",
+                data:{
+                    parentMsg:"父信息默认值"
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <input type="text" v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+</body>
+</html>

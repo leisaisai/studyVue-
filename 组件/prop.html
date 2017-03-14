@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>prop</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("child",{
+            props:["myMessage"],
+            template:"<button v-on:click='msg'>{{myMessage}}</button>",
+            methods:{
+                msg:function () {
+                    alert(this.myMessage);
+                }
+            }
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#example"
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <child my-message="hello"></child>
+</div>
+</body>
+</html>
