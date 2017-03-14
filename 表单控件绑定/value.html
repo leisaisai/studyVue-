@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>value</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var vm;
+        window.onload=function () {
+            vm=new Vue({
+                /*el:"#example",
+                data:{
+                    toggle:false
+                }*/
+                
+                /*el:"#radios",
+                data:{
+                    picked:"未选中时"
+                }*/
+                
+                el:"#selects",
+                data:{
+                    selected:""
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <input type="checkbox" id="exam" v-model="toggle" true-value="a" false-value="b">
+    <label for="exam">{{toggle}}</label>
+</div>
+
+<div id="radios">
+    <input type="radio" id="bird" v-model="picked" value="c">
+    <label for="bird">{{picked}}</label>
+</div>
+
+<div id="selects">
+    <select id="flower" v-model="selected">
+        <option value="{mumber:123}">123</option>
+    </select>
+    <span>selected:{{selected}}</span>
+</div>
+</body>
+</html>
