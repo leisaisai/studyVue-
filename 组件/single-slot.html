@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>single-slot</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <script>
+        Vue.component("my-component",{
+            template:"<div>\
+                        <h2>我是子组件的标题</h2>\
+                        <slot>\
+                            只有在没有要奋发的内容时才会显示\
+                        </slot>\
+                      </div>"
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#example"
+            })
+        }
+    </script>
+</head>
+<body>
+
+    <!--<template id="child">
+        <h2>我是子组件的标题</h2>
+        <slot>
+            只有在没有要奋发的内容时才会显示
+        </slot>
+    </template>-->
+
+<div id="example">
+    <h1>我是父组件的标题</h1>
+    <my-component>
+        <p>这是一些初始内容</p>
+        <p>这是更多的初始内容</p>
+    </my-component>
+</div>
+</body>
+</html>

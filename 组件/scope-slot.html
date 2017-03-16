@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>scope-slot</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <script>
+        Vue.component("child",{
+            template:"<div id='child'>\
+                         <slot text='hello from child'></slot>\
+                      </div>"
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#example"
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <child>
+        <template scope="props">
+            <span>hello from parent</span>
+            <br>
+            <span>{{props.text}}</span>
+        </template>
+    </child>
+</div>
+</body>
+</html>

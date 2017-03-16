@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>named-slot</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <style>
+        .container{
+            color: red;
+        }
+    </style>
+    <script>
+        Vue.component("app-layout",{
+            template:"\
+                <div class='container'>\
+                    <header>\
+                        <slot name='header'></slot>\
+                    </header>\
+                    <main>\
+                        <slot></slot>\
+                    </main>\
+                    <footer>\
+                        <slot name='footer'></slot>\
+                    </footer>\
+                </div>"
+        });
+        window.onload=function () {
+            var vm=new Vue({
+                el:"#example"
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="example">
+    <app-layout>
+        <h1 slot="header">这里可能是一个页面标题</h1>
+        <p>主要内容的一个段落</p>
+        <p>另一个主要段落</p>
+        <p slot="footer">这里有一些联系信息</p>
+        <p slot="footer">这里有信息</p>
+    </app-layout>
+</div>
+</body>
+</html>
