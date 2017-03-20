@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>asynchronous-update-queue</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <script>
+        /*Vue.component('example', {
+         template: '<span @click="updateMessage">{{ message }}</span>',
+         data: function () {
+         return {
+         message: 'not updated'
+         }
+         },
+         methods: {
+         updateMessage: function () {
+         this.message = 'updated';
+         alert(this.$el.textContent); // => '没有更新'
+         this.$nextTick(function () {
+         alert(this.$el.textContent);// => '更新完成'
+         })
+         }
+         }
+         });
+         window.onload=function () {
+         var vm=new Vue({
+         el:"#ss"
+         })
+         };*/
+        /*window.onload = function () {
+            var vm = new Vue({
+                el: "#medo",
+                data: {
+                    message: "123"
+                }
+            });
+            vm.message = "new message";
+            var rel = vm.$el.textContent === "new message";
+            alert(rel);
+            Vue.nextTick(function () {
+                alert(vm.$el.textContent === "new message");
+            })
+        }*/
+    </script>
+</head>
+<body>
+<div id="medo"> {{message}}</div>
+<div id="ss">
+    <example></example>
+</div>
+<script>
+    Vue.component('example', {
+     template: '<span @click="updateMessage">{{ message }}</span>',
+     data: function () {
+     return {
+     message: 'not updated'
+     }
+     },
+     methods: {
+     updateMessage: function () {
+     this.message = 'updated';
+     alert(this.$el.textContent); // => '没有更新'
+     this.$nextTick(function () {
+     alert(this.$el.textContent);// => '更新完成'
+     })
+     }
+     }
+     });
+     window.onload=function () {
+     var vm=new Vue({
+     el:"#ss"
+     })
+     };
+</script>
+</body>
+</html>

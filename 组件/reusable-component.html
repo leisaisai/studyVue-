@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>reusable-component</title>
+</head>
+<body>
+<div id="example">
+    <my-component :foo="baz" :bar="qux" @event-a="doThis" @event-b="doThat">
+        <p slot="icon">welcome to beijing</p>
+        <p slot="main-text">Hello!</p>
+    </my-component>
+</div>
+</body>
+</html>
