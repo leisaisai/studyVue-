@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>css-transition</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <style>
+        .slice-fade-enter-active{
+            transition:all .3s ease;
+        }
+        .slice-fade-leave-active{
+            -webkit-transition: all .8s cubic-bezier(1.0,0.5,0.8,1.0);
+            -moz-transition: all .8s cubic-bezier(1.0,0.5,0.8,1.0);
+            -ms-transition: all .8s cubic-bezier(1.0,0.5,0.8,1.0);
+            -o-transition: all .8s cubic-bezier(1.0,0.5,0.8,1.0);
+            transition: all .8s cubic-bezier(1.0,0.5,0.8,1.0);
+        }
+        .slice-fade-enter,.slice-fade-leave {
+            transform: translateX(10px);
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <button @click="show=!show">
+        Toggle render
+    </button>
+    <transition name="slice-fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script>
+    new Vue({
+        el:"#demo",
+        data:{
+           show:true
+        }
+    })
+</script>
+</body>
+</html>
