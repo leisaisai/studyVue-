@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>multiple-component-transition</title>
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.min.js"></script>
+    <style>
+        .fade-enter-active,.fade-leave-active{
+            transition: all .8s ease;
+        }
+        .fade-enter,.fade-leave{
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <input type="radio" value="v-a" name="picked" v-model="view">A
+    <input type="radio" value="v-b" name="picked" v-model="view">B
+    <transition name="fade" mode="out-in">
+        <component v-bind:is="view"></component>
+    </transition>
+</div>
+<script>
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            view:"v-a",
+        },
+        components:{
+            "v-a":{
+                template:"<div >Component A</div>"
+            },
+            "v-b":{
+                template:"<div>Component B</div>"
+            }
+        },
+        methods:{
+           
+        }
+    })
+</script>
+</body>
+</html>
