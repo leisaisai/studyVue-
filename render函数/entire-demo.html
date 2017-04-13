@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>entire-demo</title>
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.min.js"></script>
+</head>
+<body>
+<div id="demo">
+    <!--<h1>
+        <a href="#hello-world" name="hello-world">
+            Hello world!
+        </a>
+    </h1>-->
+    <anchored-heading :level="2">
+        Hello world!
+    </anchored-heading>
+</div>
+<script>
+    var getChildrenTextContent=function (children) {
+        return children.map(function (node) {
+            return node.children ? getChildrenTextContent(node.children) : node.text;
+        }).join("");
+    };
+    Vue.component("anchored-heading",{
+        render:function (createElement) {
+            var headingId=getChildrenTextContent(this.$slots.default)
+                .toLowerCase()
+                .replace(/\w+/g,"-")
+                .replace(/(^-|-$)/g,"");
+            return createElement(
+                "h"+this.level,
+                [
+                    createElement("a",
+                        {
+                            attrs:{
+                                name:headingId,
+                                href:"#"+headingId
+                            }
+                        },this.$slots.default
+                    )
+                ]
+            )
+        },
+        props:{
+            level:{
+                type:Number,
+                required:true
+            }
+        }
+    });
+    new Vue({
+        el:"#demo"
+    })
+</script>
+</body>
+</html>
